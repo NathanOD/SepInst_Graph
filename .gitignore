@@ -1,0 +1,18 @@
+# Ignore files
+*.DS_Store
+*.pyc
+*.pth
+*.tar.gz
+
+# Ignore folders
+custom_model/__pycache__/
+.vscode/
+detectron2/
+__pycache__/
+datasets/
+output/
+eval/
+wandb/
+weights/
+results/
+inference/

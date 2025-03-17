@@ -1,0 +1,37 @@
+_BASE_: "../base/heads/R50/base-G_R-R50.yaml"
+OUTPUT_DIR: "output/SepInst-SIP-G_R"
+WANDB:
+  ENABLED: False
+MODEL:
+  DEVICE: "cuda"
+  USE_DEPTH: True
+  ROI_RGB_MASK_HEAD:
+    POOLER_RESOLUTION: 14
+  ROI_RGBD_MASK_HEAD:
+    POOLER_RESOLUTION: 14
+  LOSS:
+    DICE_LOSS: True
+  FUSION:
+    NAME: "MultAddFusion"
+DATASETS:
+  TRAIN: ("SIP-SEP_train",)
+  TEST: ("SIP-SEP_val",)
+  NUM_CLASSES: 1
+SOLVER:
+  IMS_PER_BATCH: 4
+  STEPS: (60000, 65000)
+  MAX_ITER: 70000
+INPUT:
+  CROP:
+    ENABLED: False
+    TYPE: "relative_range" # "absolute_range"
+    SIZE: [0.9, 0.9] # (384, 600)
+  RANDOM_FLIP: "horizontal"
+  MIN_SIZE_TRAIN: (600,)
+  MAX_SIZE_TRAIN: 900
+  MIN_SIZE_TEST: 600
+  MAX_SIZE_TEST: 900
+  MASK_FORMAT: "polygon"
+  FORMAT: "RGB"
+TEST:
+  MAX_DETECTIONS: 100

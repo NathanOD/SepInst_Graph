@@ -1,0 +1,21 @@
+_BASE_: "../../base-R50.yaml"
+MODEL:
+  HEAD_NAME: "RCNN"
+  ROI_RGB_MASK_HEAD:
+    NAME: "ClassicMaskRCNNConvUpsampleHead"
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_TYPE: "ROIAlignV2"
+    NUM_CONV: 4
+    CONV_DIM: 256
+    NORM: "GN"
+    CLS_AGNOSTIC_MASK: False
+  ROI_RGBD_MASK_HEAD:
+    NAME: "ClassicMaskRCNNConvUpsampleHead"
+    POOLER_RESOLUTION: 14
+    POOLER_SAMPLING_RATIO: 0
+    POOLER_TYPE: "ROIAlignV2"
+    NUM_CONV: 4
+    CONV_DIM: 256
+    NORM: "GN"
+    CLS_AGNOSTIC_MASK: False

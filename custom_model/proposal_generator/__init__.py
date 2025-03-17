@@ -1,0 +1,1 @@
+from .fcos import build_proposal_generator

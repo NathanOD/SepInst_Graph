@@ -1,0 +1,27 @@
+_BASE_: base-R50.yaml
+MODEL:
+  #WEIGHTS: "swin_base_patch4_window12_384.pkl"
+  BACKBONE:
+    NAME: "build_swin_fpn_backbone"
+  SWIN:
+    EMBED_DIM: 96
+    DEPTHS: [2, 2, 6, 2]
+    NUM_HEADS: [3, 6, 12, 24]
+    WINDOW_SIZE: 7
+    APE: False
+    DROP_PATH_RATE: 0.3
+    PATCH_NORM: True
+    PRETRAIN_IMG_SIZE: 224
+    PATCH_SIZE: 4
+    MLP_RATIO: 4.0
+    QKV_BIAS: True
+    QK_SCALE: None
+    DROP_RATE: 0.0
+    ATTN_DROP_RATE: 0.0
+    USE_CHECKPOINT: False
+    OUT_FEATURES: ["res2", "res3", "res4", "res5"]
+  FPN:
+    IN_FEATURES: ["res2", "res3", "res4", "res5"]
+    OUT_CHANNELS: 256
+    NORM: "GN" # default is ""
+    FUSE_TYPE: "sum"
