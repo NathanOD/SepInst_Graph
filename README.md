@@ -50,6 +50,8 @@ python tools/train_net.py --config-file configs/R50/config-sip.yaml --num-gpus 1
 python tools/train_net.py --config-file configs/R50/config-tcan.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/1S-R50-TCAN-80k.pth OUTPUT_DIR eval/eval-TCAN
 
 python tools/train_net.py --config-file configs/R50/config-cobo.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/1S-R50-COBO-60k.pth OUTPUT_DIR eval/eval-COBO
+
+python tools/train_net.py --config-file config-OLD.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/sip_oldconfig.pth OUTPUT_DIR eval/eval-SIP
 ```
 
 Visualize results:
