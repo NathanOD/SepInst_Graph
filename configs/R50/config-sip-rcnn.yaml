@@ -1,5 +1,5 @@
-_BASE_: "../base/heads/R50/base-G_R-R50.yaml"
-OUTPUT_DIR: "output/SepInst-SIP-G_R"
+_BASE_: "../base/heads/R50/base-RCNN-R50.yaml"
+OUTPUT_DIR: "output/SepInst-SIP-RCNN"
 WANDB:
   ENABLED: False
 MODEL:

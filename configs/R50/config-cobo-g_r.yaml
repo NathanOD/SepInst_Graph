@@ -1,5 +1,5 @@
 _BASE_: "../base/heads/R50/base-G_R-R50.yaml"
-OUTPUT_DIR: "output/SepInst-SIP-G_R"
+OUTPUT_DIR: "output/SepInst-COBO-G_R"
 WANDB:
   ENABLED: False
 MODEL:
@@ -18,7 +18,7 @@ DATASETS:
   TEST: ("COBO-SEP_val",)
   NUM_CLASSES: 1
 SOLVER:
-  IMS_PER_BATCH: 4
+  IMS_PER_BATCH: 8
   STEPS: (60000, 65000)
   MAX_ITER: 70000
 INPUT:
