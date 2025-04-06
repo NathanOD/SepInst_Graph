@@ -45,23 +45,27 @@ python tools/train_net.py --config-file configs/Swin/config-sip-rcnn-swin.yaml -
 Test model:
 
 ```shell
-python tools/train_net.py --config-file configs/R50/config-sip.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/1S-R50-SIP-30k.pth OUTPUT_DIR eval/eval-SIP
+python tools/train_net.py --config-file configs/R50/config-sip-rcnn.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/RCNN-R50-SIP-50k.pth OUTPUT_DIR eval/eval-SIP-rcnn
 
-python tools/train_net.py --config-file configs/R50/config-tcan.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/1S-R50-TCAN-80k.pth OUTPUT_DIR eval/eval-TCAN
+python tools/train_net.py --config-file configs/R50/config-tcan-rcnn.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/RCNN-R50-TCAN-70k.pth OUTPUT_DIR eval/eval-TCAN-rcnn
 
-python tools/train_net.py --config-file configs/R50/config-cobo.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/1S-R50-COBO-60k.pth OUTPUT_DIR eval/eval-COBO
+python tools/train_net.py --config-file configs/R50/config-cobo-rcnn.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/RCNN-R50-COBO-40k.pth OUTPUT_DIR eval/eval-COBO-rcnn
 
-python tools/train_net.py --config-file config-OLD.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/sip_oldconfig.pth OUTPUT_DIR eval/eval-SIP
+python tools/train_net.py --config-file configs/R50/config-sip-g_r.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/GCN-R50-SIP-40k.pth OUTPUT_DIR eval/eval-SIP-gcn
+
+python tools/train_net.py --config-file configs/R50/config-tcan-g_r.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/GCN-R50-TCAN-70k.pth OUTPUT_DIR eval/eval-TCAN-gcn
+
+python tools/train_net.py --config-file configs/R50/config-cobo-g_r.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS weights/GCN-R50-COBO-60k.pth OUTPUT_DIR eval/eval-COBO-gcn
 ```
 
 Visualize results:
 
 ```shell
-python tools/demo.py --config-file configs/config-sip.yaml --input datasets/SIP-SEP_val/RGB/* --output results/results_SIP/ --opt MODEL.WEIGHTS weights/1S-R50-SIP-30k.pth
+python tools/demo.py --config-file configs/R50/config-sip-rcnn.yaml --input datasets/SIP-SEP_val/RGB/* --output results/results_SIP/ --opt MODEL.WEIGHTS weights/RCNN-R50-SIP-50k.pth
 
-python tools/demo.py --config-file configs/config-tcan.yaml --input datasets/TCAN-D_val/RGB/* --output results/results_TCAN/ --opt MODEL.WEIGHTS weights/1S-R50-TCAN-80k.pth
+python tools/demo.py --config-file configs/R50/config-tcan-rcnn.yaml --input datasets/TCAN-D_val/RGB/* --output results/results_TCAN/ --opt MODEL.WEIGHTS weights/RCNN-R50-TCAN-70k.pth
 
-python tools/demo2.py --config-file configs/config-cobo.yaml --input datasets/COBO-SEP_val/RGB/* --output results/results_COBO/ --opt MODEL.WEIGHTS weights/1S-R50-COBO-60k.pth
+python tools/demo.py --config-file configs/R50/config-cobo-rcnn.yaml --input datasets/COBO-SEP_val/RGB/* --output results/results_COBO/ --opt MODEL.WEIGHTS weights/RCNN-R50-COBO-40k.pth INPUT.FORMAT BGR
 ```
 
 (create results folder to save all images)
@@ -75,5 +79,5 @@ python tools/demo2.py --config-file configs/config-cobo.yaml --inference --input
 FLOPs and Parameters:
 
 ```shell
-python tools/get_flops.py --config-file configs/config.yaml --tasks parameter flop
+python tools/get_flops.py --config-file configs/R50/config-sip-g_r.yaml --tasks parameter flop
 ```
